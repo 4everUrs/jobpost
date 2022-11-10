@@ -15,6 +15,15 @@ return new class extends Migration
     {
         Schema::create('application_forms', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('position');
+            $table->string('email');
+            $table->string('phone');
+            $table->string('address');
+            $table->string('resume_file');
+            $table->string('company');
+            $table->string('location');
+            $table->string('status');
             $table->timestamps();
         });
     }

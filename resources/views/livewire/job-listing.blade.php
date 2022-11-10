@@ -1,7 +1,7 @@
 <div>
     <div class="job-listing-area pt-120 pb-120">
         <div class="container">
-            <div class="row">
+            <div class="">
                 <!-- Left content -->
                 
                 <!-- Right content -->
@@ -13,14 +13,11 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="count-job mb-35">
-                                        <span>39, 782 Jobs found</span>
                                         <!-- Select job items start -->
                                         <div class="select-job-items">
                                             <span>Sort by</span>
                                             <select name="select">
                                                 <option value="">None</option>
-                                                <option value="">job list</option>
-                                                <option value="">job list</option>
                                                 <option value="">job list</option>
                                             </select>
                                         </div>
@@ -30,32 +27,49 @@
                             </div>
                             <!-- Count of Job list End -->
                             <!-- single-job-content -->
-                            @foreach($jobs as $job)
-                                <div class="single-job-items mb-30">
-                                    <div class="job-items">
-                                        <div class="company-img">
-                                            <a href="#"><img src="assets/img/icon/job-list1.png" alt=""></a>
-                                        </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="#">
-                                                <h4>{{$job->name}}</h4>
-                                            </a>
-                                            <ul>
-                                                <li> Position: {{$job->position}}</li>
-                                                <li><i class="fas fa-map-marker-alt"></i>Work Location: {{$job->location}}</li>
-                                                <li>Salary ₱ {{$job->salary}}</li>
-                                                <li>Job Details: {{$job->details}}</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="items-link items-link2 f-right">
-                                        <a href="{{route('apply',$job->id)}}" class="btn btn-success">Apply Now</a>
-                                        <span>7 hours ago</span>
-                                    </div>
-                                    
+                            <div class="card">
+                                <div class="card-body">
+                                    <table class="table table-stripped">
+                                        <thead class="bg-info">
+                                            <th class="text-center">Name</th>
+                                            <th class="text-center">Position</th>
+                                            <th class="text-center">Location</th>
+                                            <th class="text-center"> Daily Salary</th>
+                                            <th class="text-center">Job Details</th>
+                                            <th class="text-center">Action</th>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($jobs as $job)
+                                            <tr>
+                                                <div class="single-job-items mb-30">
+                                                    <div class="job-items">
+                                                        <td class="text-center"><div class="company-img">
+                                                                <a href="#"><img src="assets/img/icon/job-list1.png" alt=""></a>
+                                                            </div>
+                                                        <div class="job-tittle job-tittle2">
+                                                            <a href="#">
+                                                                <h4>{{$job->name}}</h4>
+                                                            </a></td>
+                                                            <ul>
+                                                                <td class="text-center"><li>{{$job->position}}</li></td>
+                                                                <td class="text-center"><li><i class="fas fa-map-marker-alt"></i> {{$job->location}}</li></td>
+                                                                <td class="text-center"><li>@money($job->salary)</li></td>
+                                                                <td class="text-center"><li>{{$job->details}}</li></td>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <td class="text-center"><div class="items-link items-link2 f-right">
+                                                        <a href="{{route('apply',$job->id)}}" class="btn btn-success">Apply Now</a>
+                                                        <span>{{Carbon\Carbon::parse($job->created_at)->toFormattedDateString()}}</span>
+                                                    </div></td>
+                                                    
+                                                </div>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
-                            @endforeach
-
+                            </div>
                         </div>
                     </section>
                     <!-- Featured_job_end -->
