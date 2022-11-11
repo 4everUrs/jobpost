@@ -9,9 +9,10 @@ use App\Models\JobPost;
 use App\Models\Vacant;
 use Illuminate\Http\Request;
 use Livewire\WithFileUploads;
+
 class Application extends Component
 {
-    public $name,$position,$email,$phone,$address,$resume_file,$company, $location,$status = 'Screening';
+    public $name, $position, $email, $phone, $address, $resume_file, $company, $location, $status = 'Screening';
     public $selected_id;
     use WithFileUploads;
     
@@ -53,7 +54,7 @@ class Application extends Component
     }
     public function resetInput()
     {
-  
+
         $this->name = null;
         $this->position = null;
         $this->email = null;
@@ -62,5 +63,4 @@ class Application extends Component
         $this->resume_file = null;
         $this->company = null;
     }
-    
 }
